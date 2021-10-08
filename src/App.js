@@ -37,6 +37,12 @@ function App() {
     });
   };
 
+  const updateUser = (id, updatedUser) => {
+    setEditing(false);
+
+    setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
+  };
+
   //Delete User
   const deleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id));
@@ -50,7 +56,7 @@ function App() {
           {editing ? (
             <div>
               <h2>Edit user</h2>
-              <EditUserForm currentUser={currentUser} />
+              <EditUserForm currentUser={currentUser} updateUser={updateUser} />
             </div>
           ) : (
             <div>
