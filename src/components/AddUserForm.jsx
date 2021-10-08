@@ -20,13 +20,17 @@ const AddUserForm = (props) => {
         name="name"
         placeholder="Name"
         required={true}
-        /*ref={register({
-          required: { value: true, message: "Campo requerido" },
-        })}*/
+        {...register("name", { required: "Campo requerido" })}
       />
       <div>{errors?.name?.message}</div>
       <label>Username</label>
-      <input type="text" name="username" placeholder="Username" />
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        required={true}
+        {...register("username", { required: "Campo requerido" })}
+      />
       <div>{errors?.username?.message}</div>
       <button>Add new user</button>
     </form>
