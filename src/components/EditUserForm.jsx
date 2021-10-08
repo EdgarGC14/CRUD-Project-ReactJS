@@ -1,13 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const AddUserForm = (props) => {
-  const { register, errors, handleSubmit } = useForm();
+const EditUserForm = (props) => {
+  console.log(props.currentUser);
+
+  const { register, errors, handleSubmit } = useForm({
+    defaultValues: { id: 23452, name: "Hola", username: "mundo" },
+  });
 
   const onSubmit = (data, e) => {
     console.log(data);
 
-    props.addUser(data);
     //clear fields
     e.target.reset();
   };
@@ -28,9 +31,9 @@ const AddUserForm = (props) => {
       <label>Username</label>
       <input type="text" name="username" placeholder="Username" />
       <div>{errors?.username?.message}</div>
-      <button>Add new user</button>
+      <button>Save Changes</button>
     </form>
   );
 };
 
-export default AddUserForm;
+export default EditUserForm;
