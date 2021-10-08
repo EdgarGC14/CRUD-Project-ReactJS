@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import UserTable from "./components/UserTable";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
+  const usersData = [
+    { id: uuidv4(), name: "Edgar", username: "EdgarGuCe14" },
+    { id: uuidv4(), name: "Luis", username: "LuisEGC14" },
+    { id: uuidv4(), name: "Allison", username: "AllisonNGC14" },
+  ];
+
+  //Satate
+  const [users, setUsers] = useState(usersData);
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
@@ -10,6 +21,7 @@ function App() {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
+          <UserTable users={users} />
         </div>
       </div>
     </div>
