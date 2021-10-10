@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "./ui/Button";
+import TableHeaders from "./ui/TableHeaders";
 
 const UserTable = (props) => {
   //console.log(props.users);
@@ -6,9 +8,15 @@ const UserTable = (props) => {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Actions</th>
+          <th>
+            <TableHeaders text="Name" />
+          </th>
+          <th>
+            <TableHeaders text="Username" />
+          </th>
+          <th>
+            <TableHeaders text="Actions" />
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +32,7 @@ const UserTable = (props) => {
                 >
                   Edit
                 </button>
+                <Button className="button muted-button" text="Edit" />
                 <button
                   className="button muted-button"
                   onClick={() => {
@@ -32,6 +41,7 @@ const UserTable = (props) => {
                 >
                   Delete
                 </button>
+                <Button className="button muted-button" text="Delete" />
               </td>
             </tr>
           ))

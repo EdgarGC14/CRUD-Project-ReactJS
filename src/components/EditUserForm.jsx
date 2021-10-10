@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "./ui/Button";
+import Label from "./ui/Label";
 
 const EditUserForm = (props) => {
   console.log("Current User :: " + props.currentUser.username);
@@ -23,7 +25,7 @@ const EditUserForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Name</label>
+      <Label text="Name" />
       <input
         type="text"
         name="name"
@@ -35,7 +37,7 @@ const EditUserForm = (props) => {
         })}*/
       />
       <div>{errors?.name?.message}</div>
-      <label>Username</label>
+      <Label text="Username" />
       <input
         type="text"
         name="username"
@@ -44,7 +46,7 @@ const EditUserForm = (props) => {
         {...register("username", { required: "Campo requerido" })}
       />
       <div>{errors?.username?.message}</div>
-      <button>Save Changes</button>
+      <Button text="Save Changes" />
     </form>
   );
 };

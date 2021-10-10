@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "./ui/Button";
+import Label from "./ui/Label";
 
 const AddUserForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
@@ -15,7 +16,7 @@ const AddUserForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Name</label>
+      <Label text="Name" />
       <input
         type="text"
         name="name"
@@ -24,7 +25,7 @@ const AddUserForm = (props) => {
         {...register("name", { required: "Campo requerido" })}
       />
       <div>{errors?.name?.message}</div>
-      <label>Username</label>
+      <Label text="Username" />
       <input
         type="text"
         name="username"
