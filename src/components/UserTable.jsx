@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserTable = (props) => {
-  console.log(props.users);
+  //console.log(props.users);
   return (
     <table>
       <thead>
@@ -15,9 +15,7 @@ const UserTable = (props) => {
         {props.users.length > 0 ? (
           props.users.map((user) => (
             <tr key={user.id}>
-              <td>
-                {user.id} - {user.name}
-              </td>
+              <td>{user.name}</td>
               <td>{user.username}</td>
               <td>
                 <button

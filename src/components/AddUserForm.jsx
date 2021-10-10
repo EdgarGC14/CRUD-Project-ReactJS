@@ -1,11 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "./ui/Button";
 
 const AddUserForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data, e) => {
-    console.log(data);
+    //console.log(data);
 
     props.addUser(data);
     //clear fields
@@ -32,7 +33,7 @@ const AddUserForm = (props) => {
         {...register("username", { required: "Campo requerido" })}
       />
       <div>{errors?.username?.message}</div>
-      <button>Add new user</button>
+      <Button text="Add New User" />
     </form>
   );
 };
