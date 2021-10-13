@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core";
 
 const Label = (props) => {
   return (
-    <Typography variant="h5" color="primary">
+    <Typography variant="h5" color="secondary">
       {props.text}
     </Typography>
   );
