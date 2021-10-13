@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Button from "./ui/Button";
+//import Button from "./ui/Button";
 import Label from "./ui/Label";
+import { Button } from "@material-ui/core/";
 
 const AddUserForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
@@ -34,7 +35,9 @@ const AddUserForm = (props) => {
         {...register("username", { required: "Campo requerido" })}
       />
       <div>{errors?.username?.message}</div>
-      <Button text="Add New User" />
+      <Button variant="contained" color="secondary">
+        Add New Users
+      </Button>
     </form>
   );
 };
