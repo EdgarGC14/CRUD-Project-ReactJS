@@ -55,19 +55,17 @@ const AddUserForm = (props) => {
           {...register("username", { required: "Campo requerido" })}
         />
         <div>{errors?.username?.message}</div>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          endIcon={<Icon>save</Icon>}
-          disableElevation
-        >
-          Add New User
-        </Button>
-        <Typography variant="h4" color="primary" align="center">
-          Lorem Ipsum
-        </Typography>
-        <Button className={classes.myClassName}>Boton</Button>
+        <div align="center">
+          <Button
+            className={classes.myClassName}
+            onClick={() => {
+              console.log("Button Pressed");
+            }}
+            endIcon={<Icon>save</Icon>}
+          >
+            Add New User
+          </Button>
+        </div>
       </form>
     </ThemeProvider>
   );

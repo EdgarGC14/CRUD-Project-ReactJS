@@ -4,6 +4,9 @@ import AddUserForm from "./components/AddUserForm";
 import EditUserForm from "./components/EditUserForm";
 import UserTable from "./components/UserTable.jsx";
 import { createUseStyles } from "react-jss";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import theme from "./components/themeConfig";
+import Typography from "@material-ui/core/Typography";
 
 function App() {
   const usersData = [
@@ -50,28 +53,45 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>CRUD App with Hooks</h1>
-      <div className="flex-row">
-        <div className="flex-large">
-          {editing ? (
-            <div>
-              <h2>Edit user</h2>
-              <EditUserForm currentUser={currentUser} updateUser={updateUser} />
-            </div>
-          ) : (
-            <div>
-              <h2>Add user</h2>
-              <AddUserForm addUser={addUser} />
-            </div>
-          )}
-        </div>
-        <div className="flex-large">
-          <h2>View users</h2>
-          <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
+    <ThemeProvider theme={theme}>
+      <div className="container">
+        <Typography variant="h3" color="secondary" align="center" paragraph>
+          CRUD App with Hooks
+        </Typography>
+        <div className="flex-row">
+          <div className="flex-large">
+            {editing ? (
+              <div>
+                <Typography variant="h4" color="primary" align="center">
+                  Edit user
+                </Typography>
+                <EditUserForm
+                  currentUser={currentUser}
+                  updateUser={updateUser}
+                />
+              </div>
+            ) : (
+              <div>
+                <Typography variant="h4" color="primary" align="center">
+                  Add user
+                </Typography>
+                <AddUserForm addUser={addUser} />
+              </div>
+            )}
+          </div>
+          <div className="flex-large">
+            <Typography variant="h4" color="primary" align="center">
+              View users
+            </Typography>
+            <UserTable
+              users={users}
+              deleteUser={deleteUser}
+              editRow={editRow}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

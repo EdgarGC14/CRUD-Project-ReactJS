@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Button from "./ui/Button";
+//import Button from "./ui/Button";
 import Label from "./ui/Label";
+import { Button, Icon } from "@material-ui/core";
 
 const EditUserForm = (props) => {
   console.log("Current User :: " + props.currentUser.username);
@@ -45,8 +46,18 @@ const EditUserForm = (props) => {
         required={true}
         {...register("username", { required: "Campo requerido" })}
       />
+
       <div>{errors?.username?.message}</div>
-      <Button text="Save Changes" />
+      <div align="center">
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          endIcon={<Icon>save</Icon>}
+        >
+          Save Changes
+        </Button>
+      </div>
     </form>
   );
 };

@@ -1,12 +1,13 @@
 import React from "react";
-import { render } from "react-dom";
-import { createUseStyles, ThemeProvider, useTheme } from "react-jss";
+import { Typography } from "@material-ui/core/";
+//import { render } from "react-dom";
+//import { createUseStyles, ThemeProvider, useTheme } from "react-jss";
 
 const TableHeaders = (props) => {
   return (
-    <p align="center" bgcolor="#444444">
+    <Typography variant="body" color="secondary" align="center">
       {props.text}
-    </p>
+    </Typography>
   );
 };
 
