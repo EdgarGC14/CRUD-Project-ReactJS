@@ -1,8 +1,7 @@
 import React from "react";
-//import Button from "./ui/Button";
 import TableHeaders from "./ui/TableHeaders";
-import { Button, Icon, Typography } from "@material-ui/core/";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { Button, Icon } from "@material-ui/core/";
+import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./themeConfig";
 
 const UserTable = (props) => {
