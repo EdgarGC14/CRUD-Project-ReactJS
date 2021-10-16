@@ -9,37 +9,37 @@ import theme from "./themeConfig";
 const EditUserForm = (props) => {
   console.log("Current User :: " + props.currentUser.username);
 
-  const { register, errors, handleSubmit, setValue } = useForm({
-    defaultValues: props.currentUser,
-  });
-
-  setValue("name", props.currentUser.name);
-  setValue("username", props.currentUser.username);
-
+  //Declaracion States
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+
+  const editUserFnct = () => {
+    console.log("Username Edited :: " + username);
+    console.log("Name Edited :: " + name);
+    props.updateUser(props.currentUser.id, { name: name, username: username });
+    props.currentUser.username = username;
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Label text="Name" />
-      <Label text="Name" />
       <input
         type="text"
-        name="usernameInput"
+        name="nameInput"
+        placeholder={props.currentUser.name}
         required={true}
         onChange={(e) => {
-          setUsername(e.target.value);
-          e.target.reset();
+          setName(e.target.value);
         }}
       />
       <Label text="Username" />
       <input
         type="text"
-        name="nameInput"
+        name="usernameInput"
+        placeholder={props.currentUser.username}
         required={true}
         onChange={(e) => {
-          setName(e.target.value);
-          e.target.reset();
+          setUsername(e.target.value);
         }}
       />
       <div align="center">
@@ -48,6 +48,7 @@ const EditUserForm = (props) => {
           color="primary"
           size="small"
           endIcon={<Icon>save</Icon>}
+          onClick={() => editUserFnct()}
         >
           Save Changes
         </Button>
