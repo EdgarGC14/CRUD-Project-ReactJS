@@ -88,6 +88,7 @@ function App() {
               deleteUser={deleteUser}
               editRow={editRow}
             />
+            <button onClick={() => console.log(users)} />
           </div>
         </div>
       </div>

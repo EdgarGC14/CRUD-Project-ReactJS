@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-//import Button from "./ui/Button";
 import Label from "./ui/Label";
 
-import { Button, Icon, Typography } from "@material-ui/core/";
+import { Button, Icon } from "@material-ui/core/";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import theme from "./themeConfig";
-//import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyle = makeStyles({
   myClassName: {
@@ -22,13 +19,17 @@ const useStyle = makeStyles({
 });
 
 const AddUserForm = (props) => {
-  const { register, errors, handleSubmit } = useForm();
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
 
-  const setUsernameValue = (e) => {
-    setUsername(e.target.value);
-    props.addUser({ id: "", name: { username }, username: { username } });
+  const addNewUserFnct = (e) => {
+    console.log("Username :: " + username);
+    console.log("Name :: " + name);
+    props.addUser({
+      id: "",
+      name: name,
+      username: username,
+    });
   };
 
   const classes = useStyle();
@@ -47,16 +48,13 @@ const AddUserForm = (props) => {
         type="text"
         name="usernameInput"
         required={true}
-        onChange={(e) => setUsernameValue()}
+        onChange={(e) => setUsername(e.target.value)}
       />
 
       <div align="center">
         <Button
           className={classes.myClassName}
-          onClick={() => {
-            console.log("Username :: " + username);
-            console.log("Name :: " + name);
-          }}
+          onClick={() => addNewUserFnct()}
           endIcon={<Icon>save</Icon>}
         >
           Add New User
