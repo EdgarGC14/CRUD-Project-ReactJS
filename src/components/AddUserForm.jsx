@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 //import Button from "./ui/Button";
 import Label from "./ui/Label";
@@ -23,50 +23,45 @@ const useStyle = makeStyles({
 
 const AddUserForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
-  const onSubmit = (data, e) => {
-    //console.log(data);
-
-    props.addUser(data);
-    //clear fields
-    e.target.reset();
+  const setUsernameValue = (e) => {
+    setUsername(e.target.value);
+    props.addUser({ id: "", name: { username }, username: { username } });
   };
 
   const classes = useStyle();
 
   return (
     <ThemeProvider theme={theme}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Label text="Name" />
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          required={true}
-          {...register("name", { required: "Campo requerido" })}
-        />
-        <div>{errors?.name?.message}</div>
-        <Label text="Username" />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required={true}
-          {...register("username", { required: "Campo requerido" })}
-        />
-        <div>{errors?.username?.message}</div>
-        <div align="center">
-          <Button
-            className={classes.myClassName}
-            onClick={() => {
-              console.log("Button Pressed");
-            }}
-            endIcon={<Icon>save</Icon>}
-          >
-            Add New User
-          </Button>
-        </div>
-      </form>
+      <Label text="Name" />
+      <input
+        type="text"
+        name="nameInput"
+        required={true}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <Label text="Username" />
+      <input
+        type="text"
+        name="usernameInput"
+        required={true}
+        onChange={(e) => setUsernameValue()}
+      />
+
+      <div align="center">
+        <Button
+          className={classes.myClassName}
+          onClick={() => {
+            console.log("Username :: " + username);
+            console.log("Name :: " + name);
+          }}
+          endIcon={<Icon>save</Icon>}
+        >
+          Add New User
+        </Button>
+      </div>
     </ThemeProvider>
   );
 };

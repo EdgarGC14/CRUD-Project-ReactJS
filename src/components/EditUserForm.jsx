@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 //import Button from "./ui/Button";
 import Label from "./ui/Label";
 import { Button, Icon } from "@material-ui/core";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import theme from "./themeConfig";
 
 const EditUserForm = (props) => {
   console.log("Current User :: " + props.currentUser.username);
@@ -14,40 +16,32 @@ const EditUserForm = (props) => {
   setValue("name", props.currentUser.name);
   setValue("username", props.currentUser.username);
 
-  const onSubmit = (data, e) => {
-    //console.log(data);
-    data.id = props.currentUser.id;
-
-    props.updateUser(props.currentUser.id, data);
-
-    //clear fields
-    e.target.reset();
-  };
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <ThemeProvider theme={theme}>
+      <Label text="Name" />
       <Label text="Name" />
       <input
         type="text"
-        name="name"
-        placeholder="Name"
+        name="usernameInput"
         required={true}
-        {...register("name", { required: "Campo requerido" })}
-        /*ref={register({
-          required: { value: true, message: "Campo requerido" },
-        })}*/
+        onChange={(e) => {
+          setUsername(e.target.value);
+          e.target.reset();
+        }}
       />
-      <div>{errors?.name?.message}</div>
       <Label text="Username" />
       <input
         type="text"
-        name="username"
-        placeholder="Username"
+        name="nameInput"
         required={true}
-        {...register("username", { required: "Campo requerido" })}
+        onChange={(e) => {
+          setName(e.target.value);
+          e.target.reset();
+        }}
       />
-
-      <div>{errors?.username?.message}</div>
       <div align="center">
         <Button
           variant="contained"
@@ -58,7 +52,7 @@ const EditUserForm = (props) => {
           Save Changes
         </Button>
       </div>
-    </form>
+    </ThemeProvider>
   );
 };
 
