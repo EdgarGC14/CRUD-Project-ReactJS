@@ -6,6 +6,7 @@ import UserTable from "./components/UserTable.jsx";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/themeConfig";
 import Typography from "@material-ui/core/Typography";
+import { Button, Icon } from "@material-ui/core/";
 
 function App() {
   const usersData = [
@@ -51,9 +52,18 @@ function App() {
     setUsers(users.filter((user) => user.id !== id));
   };
 
+  const [toggleBackground, setToggleBackground] = useState(true);
+
   return (
     <ThemeProvider theme={theme}>
-      <div className="container">
+      <div
+        className="container"
+        style={
+          toggleBackground
+            ? { backgroundColor: "#F5F5F5" }
+            : { backgroundColor: "#555555" }
+        }
+      >
         <Typography variant="h3" color="secondary" align="center" paragraph>
           CRUD App with Hooks
         </Typography>
@@ -87,7 +97,16 @@ function App() {
               deleteUser={deleteUser}
               editRow={editRow}
             />
-            <button onClick={() => console.log(users)} />
+            <div align="center">
+              <Button
+                variant="contained"
+                color="primary"
+                endIcon={<Icon>bolt</Icon>}
+                onClick={() => setToggleBackground(!toggleBackground)}
+              >
+                Dark Mode ON/OFF
+              </Button>
+            </div>
           </div>
         </div>
       </div>
