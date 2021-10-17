@@ -9,12 +9,13 @@ import theme from "./themeConfig";
 
 const useStyle = makeStyles({
   myClassName: {
+    backgroundColor: "#444444",
     background: "#444444",
     border: 0,
     borderRadius: 10,
     boxShadow: "0 3px 5 px 2px rgba(255, 105, 135, .3)",
     color: "white",
-    height: 30,
+    height: 50,
     width: 190,
     padding: "0 30px",
   },
@@ -37,7 +38,7 @@ const AddUserForm = (props) => {
           title: "Error!",
           text: "Name and Username Required",
           icon: "warning",
-          button: "Aceptar",
+          button: "Understood",
         });
   };
 
