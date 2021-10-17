@@ -33,13 +33,12 @@ const AddUserForm = (props) => {
           name: name,
           username: username,
         })
-      : console.log("Error: name and username required");
-    swal({
-      title: "Error!",
-      text: "Name and Username Required",
-      icon: "warning",
-      button: "Aceptar",
-    });
+      : swal({
+          title: "Error!",
+          text: "Name and Username Required",
+          icon: "warning",
+          button: "Aceptar",
+        });
   };
 
   const classes = useStyle();
