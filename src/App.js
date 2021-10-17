@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import AddUserForm from "./components/AddUserForm";
 import EditUserForm from "./components/EditUserForm";
 import UserTable from "./components/UserTable.jsx";
-import { createUseStyles } from "react-jss";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/themeConfig";
 import Typography from "@material-ui/core/Typography";
 

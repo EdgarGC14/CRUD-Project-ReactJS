@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Label from "./ui/Label";
+//import Alert from "react-native/Alert";
+import swal from "sweetalert";
 
 import { Button, Icon } from "@material-ui/core/";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
@@ -25,10 +27,18 @@ const AddUserForm = (props) => {
   const addNewUserFnct = (e) => {
     console.log("Username :: " + username);
     console.log("Name :: " + name);
-    props.addUser({
-      id: "",
-      name: name,
-      username: username,
+    name !== "" && username !== ""
+      ? props.addUser({
+          id: "",
+          name: name,
+          username: username,
+        })
+      : console.log("Error: name and username required");
+    swal({
+      title: "Error!",
+      text: "Name and Username Required",
+      icon: "warning",
+      button: "Aceptar",
     });
   };
 
@@ -40,14 +50,12 @@ const AddUserForm = (props) => {
       <input
         type="text"
         name="nameInput"
-        required={true}
         onChange={(e) => setName(e.target.value)}
       />
       <Label text="Username" />
       <input
         type="text"
         name="usernameInput"
-        required={true}
         onChange={(e) => setUsername(e.target.value)}
       />
 

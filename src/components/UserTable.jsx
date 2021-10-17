@@ -29,25 +29,26 @@ const UserTable = (props) => {
                 <td>{user.name}</td>
                 <td>{user.username}</td>
                 <td>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    endIcon={<Icon>edit</Icon>}
-                    onClick={() => props.editRow(user)}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    endIcon={<Icon>deleteforever</Icon>}
-                    onClick={() => props.deleteUser(user.id)}
-                  >
-                    Delete
-                  </Button>
-                  <Button className="button muted-button" text="Delete" />
+                  <div align="center">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      size="small"
+                      endIcon={<Icon>edit</Icon>}
+                      onClick={() => props.editRow(user)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      size="small"
+                      endIcon={<Icon>deleteforever</Icon>}
+                      onClick={() => props.deleteUser(user.id)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </td>
               </tr>
             ))

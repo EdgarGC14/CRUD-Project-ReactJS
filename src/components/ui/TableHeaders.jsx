@@ -3,7 +3,7 @@ import { Typography } from "@material-ui/core/";
 
 const TableHeaders = (props) => {
   return (
-    <Typography variant="body" color="secondary" align="center">
+    <Typography variant="h6" color="secondary" align="center">
       {props.text}
     </Typography>
   );
